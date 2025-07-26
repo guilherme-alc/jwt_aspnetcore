@@ -1,4 +1,5 @@
 using JwtAspnet;
+using JwtAspnet.Extensions;
 using JwtAspnet.Models;
 using JwtAspnet.Service;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -76,11 +77,11 @@ app.MapGet("/id", () => "Acesso de ids permitidos!")
     .RequireAuthorization("id");
 
 app.MapGet("/claims", (ClaimsPrincipal claimsUser) => new { 
-    id = claimsUser.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value,
-    name = claimsUser.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Name)?.Value,
-    email = claimsUser.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value,
-    givenName = claimsUser.Claims.FirstOrDefault(c => c.Type == ClaimTypes.GivenName)?.Value,
-    image = claimsUser.Claims.FirstOrDefault(c => c.Type == "image")?.Value,
+    id = claimsUser.Id(),
+    name = claimsUser.Name(),
+    email = claimsUser.Email(),
+    givenName = claimsUser.GivenName(),
+    image = claimsUser.Image(),
 })
 .RequireAuthorization();
 
