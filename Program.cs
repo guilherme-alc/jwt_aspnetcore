@@ -75,4 +75,13 @@ app.MapGet("/guilherme", () => "Acesso do usuário guilherme liberado!")
 app.MapGet("/id", () => "Acesso de ids permitidos!")
     .RequireAuthorization("id");
 
+app.MapGet("/claims", (ClaimsPrincipal claimsUser) => new { 
+    id = claimsUser.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value,
+    name = claimsUser.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Name)?.Value,
+    email = claimsUser.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value,
+    givenName = claimsUser.Claims.FirstOrDefault(c => c.Type == ClaimTypes.GivenName)?.Value,
+    image = claimsUser.Claims.FirstOrDefault(c => c.Type == "image")?.Value,
+})
+.RequireAuthorization();
+
 app.Run();
