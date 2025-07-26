@@ -3,6 +3,7 @@ using JwtAspnet.Models;
 using JwtAspnet.Service;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using System.Security.Claims;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -25,7 +26,23 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
-builder.Services.AddAuthorization();
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("admin", policy =>
+    {
+        policy.RequireRole("admin");
+    });
+
+    options.AddPolicy("username", policy =>
+    {
+        policy.RequireUserName("guilherme@gmail.com");
+    });
+
+    options.AddPolicy("id", policy =>
+    {
+        policy.RequireClaim(ClaimTypes.NameIdentifier, ["1", "2"]);
+    });
+});
 
 var app = builder.Build();
 app.UseAuthentication();
@@ -45,8 +62,17 @@ app.MapGet("/login", (TokenService service) => {
     return service.Generate(user);
 });
 
-app.MapGet("/restrito", (TokenService service) => {
-    return "Acesso permitido a rota restrita";
+app.MapGet("/restrito", () => {
+    return "Acesso permitido a rota de usuários autenticados";
 }).RequireAuthorization();
+
+app.MapGet("/admin", () => "Acesso de administrador liberado!")
+    .RequireAuthorization("admin");
+
+app.MapGet("/guilherme", () => "Acesso do usuário guilherme liberado!")
+    .RequireAuthorization("username");
+
+app.MapGet("/id", () => "Acesso de ids permitidos!")
+    .RequireAuthorization("id");
 
 app.Run();
