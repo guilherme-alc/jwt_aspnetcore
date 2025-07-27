@@ -1,4 +1,4 @@
-﻿namespace Login.Core.SharedContext.Value_Objects
+﻿namespace Login.Core.SharedContext.ValueObjects
 {
     public abstract class ValueObject
     {
