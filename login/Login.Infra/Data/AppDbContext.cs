@@ -1,4 +1,5 @@
 ﻿using Login.Core.Contexts.AccountContext.Entities;
+using Login.Infra.Contexts.AccounContext.Mappings;
 using Microsoft.EntityFrameworkCore;
 
 namespace Login.Infra.Data
@@ -13,7 +14,8 @@ namespace Login.Infra.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
+            modelBuilder.ApplyConfiguration(new UserMap());
+            base.OnModelCreating(modelBuilder);
         }
     }
 }
