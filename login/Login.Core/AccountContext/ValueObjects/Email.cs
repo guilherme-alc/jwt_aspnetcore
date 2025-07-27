@@ -23,6 +23,14 @@ namespace Login.Core.AccountContext.ValueObjects
 
         public string Adress { get; }
         public string Hash => Adress.ToBase64();
+        public Verification Verification { get; private set; } = new Verification();
+
+        public void ResendVerification()
+        {
+            if (Verification.IsActive)
+                throw new InvalidEmailException("Esse e-mail já foi verificado.");
+            Verification = new Verification();
+        }
 
         [GeneratedRegex(_pattern)]
         private static partial Regex EmailRegex();
