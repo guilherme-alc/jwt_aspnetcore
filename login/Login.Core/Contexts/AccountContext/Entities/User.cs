@@ -1,9 +1,9 @@
-﻿using Login.Core.AccountContext.ValueObjects;
-using Login.Core.Context.AccountContext.Exceptions;
-using Login.Core.Context.AccountContext.ValueObjects;
-using Login.Core.Context.SharedContext.Entities;
+﻿using Login.Core.AccountContexts.ValueObjects;
+using Login.Core.Contexts.AccountContext.Exceptions;
+using Login.Core.Contexts.AccountContext.ValueObjects;
+using Login.Core.Contexts.SharedContext.Entities;
 
-namespace Login.Core.Context.AccountContext.Entities
+namespace Login.Core.Contexts.AccountContext.Entities
 {
     public class User : Entity
     {

@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace Login.Core.Context.AccountContext.Exceptions
+namespace Login.Core.Contexts.AccountContext.Exceptions
 {
     public class InvalidNameException : Exception
     {

@@ -1,10 +1,10 @@
-﻿using Login.Core.Context.AccountContext.Exceptions;
-using Login.Core.Context.AccountContext.ValueObjects;
-using Login.Core.Context.SharedContext.Extensions;
-using Login.Core.Context.SharedContext.ValueObjects;
+﻿using Login.Core.Contexts.AccountContext.Exceptions;
+using Login.Core.Contexts.AccountContext.ValueObjects;
+using Login.Core.Contexts.SharedContext.Extensions;
+using Login.Core.Contexts.SharedContext.ValueObjects;
 using System.Text.RegularExpressions;
 
-namespace Login.Core.AccountContext.ValueObjects
+namespace Login.Core.AccountContexts.ValueObjects
 {
     public partial class Email : ValueObject
     {
@@ -17,16 +17,16 @@ namespace Login.Core.AccountContext.ValueObjects
             if(string.IsNullOrEmpty(adress))
                 throw new InvalidEmailException("E-mail não pode ser nulo ou vazio.");
 
-            Adress = adress.Trim().ToLower();
+            Address = adress.Trim().ToLower();
 
-            if (Adress.Length < 5)
+            if (Address.Length < 5)
                 throw new InvalidEmailException("E-mail deve ter pelo menos 5 caracteres.");
-            if(!EmailRegex().IsMatch(Adress))
+            if(!EmailRegex().IsMatch(Address))
                 throw new InvalidEmailException("E-mail inválido.");
         }
 
-        public string Adress { get; }
-        public string Hash => Adress.ToBase64();
+        public string Address { get; }
+        public string Hash => Address.ToBase64();
         public VerificationEmail Verification { get; private set; } = new VerificationEmail();
 
         public void ResendVerification()
@@ -42,7 +42,7 @@ namespace Login.Core.AccountContext.ValueObjects
 
         public override string ToString()
         {
-            return Adress;
+            return Address;
         }
 
         public static implicit operator string(Email adress)

@@ -1,7 +1,7 @@
-﻿using Login.Core.Context.AccountContext.Exceptions;
-using Login.Core.Context.SharedContext.ValueObjects;
+﻿using Login.Core.Contexts.AccountContext.Exceptions;
+using Login.Core.Contexts.SharedContext.ValueObjects;
 
-namespace Login.Core.Context.AccountContext.ValueObjects
+namespace Login.Core.Contexts.AccountContext.ValueObjects
 {
     public class Verification : ValueObject
     {

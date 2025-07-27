@@ -1,4 +1,4 @@
-﻿namespace Login.Core.Context.AccountContext.Exceptions
+﻿namespace Login.Core.Contexts.AccountContext.Exceptions
 {
     public class InvalidPasswordException : Exception
     {

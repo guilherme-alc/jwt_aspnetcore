@@ -1,4 +1,4 @@
-﻿namespace Login.Core.Context.SharedContext.Extensions
+﻿namespace Login.Core.Contexts.SharedContext.Extensions
 {
     public static class StringExtension
     {

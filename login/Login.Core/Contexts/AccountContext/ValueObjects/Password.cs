@@ -1,7 +1,7 @@
-﻿using Login.Core.Context.SharedContext.ValueObjects;
+﻿using Login.Core.Contexts.SharedContext.ValueObjects;
 using System.Security.Cryptography;
 
-namespace Login.Core.Context.AccountContext.ValueObjects
+namespace Login.Core.Contexts.AccountContext.ValueObjects
 {
     public class Password : ValueObject
     {
