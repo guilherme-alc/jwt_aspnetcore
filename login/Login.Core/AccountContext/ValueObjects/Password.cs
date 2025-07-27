@@ -17,8 +17,10 @@ namespace Login.Core.AccountContext.ValueObjects
             Hash = Hashing(text);
         }
 
+        public bool Challenge(string plainTextPassword)
+            => Verify(Hash, plainTextPassword);
         public string Hash { get; } = string.Empty;
-        public VerificationPassword? ResetCode { get; }
+        public VerificationPassword ResetCode { get; } = new VerificationPassword();
 
         private static string GenerateRandom(
             short length = 16, 
