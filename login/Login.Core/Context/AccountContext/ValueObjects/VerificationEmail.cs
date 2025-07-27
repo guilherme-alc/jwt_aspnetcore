@@ -1,6 +1,6 @@
-﻿using Login.Core.AccountContext.Exceptions;
+﻿using Login.Core.Context.AccountContext.Exceptions;
 
-namespace Login.Core.AccountContext.ValueObjects
+namespace Login.Core.Context.AccountContext.ValueObjects
 {
     public class VerificationEmail : Verification
     {

@@ -1,4 +1,4 @@
-﻿namespace Login.Core.SharedContext.Entities
+﻿namespace Login.Core.Context.SharedContext.Entities
 {
     public abstract class Entity : IEquatable<Guid>
     {

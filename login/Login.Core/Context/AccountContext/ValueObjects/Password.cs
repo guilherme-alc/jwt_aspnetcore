@@ -1,7 +1,7 @@
-﻿using Login.Core.SharedContext.ValueObjects;
+﻿using Login.Core.Context.SharedContext.ValueObjects;
 using System.Security.Cryptography;
 
-namespace Login.Core.AccountContext.ValueObjects
+namespace Login.Core.Context.AccountContext.ValueObjects
 {
     public class Password : ValueObject
     {
@@ -27,7 +27,7 @@ namespace Login.Core.AccountContext.ValueObjects
             bool includeSpecialChars = true, 
             bool upperCase = false)
         {
-            var chars = includeSpecialChars ? (Valid + Special) : Valid;
+            var chars = includeSpecialChars ? Valid + Special : Valid;
             var startRandom = upperCase ? 26 : 0;
             var index = 0;
             var res = new char[length];

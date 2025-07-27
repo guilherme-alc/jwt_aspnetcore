@@ -1,4 +1,4 @@
-﻿namespace Login.Core.AccountContext.Exceptions
+﻿namespace Login.Core.Context.AccountContext.Exceptions
 {
     public class InvalidCodeException : Exception
     {

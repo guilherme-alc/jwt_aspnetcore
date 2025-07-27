@@ -1,8 +1,9 @@
-﻿using Login.Core.AccountContext.Exceptions;
-using Login.Core.AccountContext.ValueObjects;
-using Login.Core.SharedContext.Entities;
+﻿using Login.Core.AccountContext.ValueObjects;
+using Login.Core.Context.AccountContext.Exceptions;
+using Login.Core.Context.AccountContext.ValueObjects;
+using Login.Core.Context.SharedContext.Entities;
 
-namespace Login.Core.AccountContext.Entities
+namespace Login.Core.Context.AccountContext.Entities
 {
     public class User : Entity
     {
@@ -13,7 +14,7 @@ namespace Login.Core.AccountContext.Entities
             Password = new Password(password);
         }
 
-        public string? Name { get; set; } = string.Empty;
+        public string Name { get; set; } = string.Empty;
         public Email Email { get; private set; } = null!;
         public Password Password { get; private set; } = null!;
         public string Image { get; set; } = string.Empty;
@@ -33,7 +34,7 @@ namespace Login.Core.AccountContext.Entities
             if (string.IsNullOrEmpty(email))
                 throw new InvalidEmailException("O e-mail não pode ser nulo ou vazio.");
 
-            Email = email;
+            Email = new Email(email);
         }
 
         public void ChangePassword(string oldPassword, string newPassword)
@@ -45,8 +46,10 @@ namespace Login.Core.AccountContext.Entities
             Password = new Password(newPassword);
         }
 
-        public void UpdateName(string? name = null)
+        public void UpdateName(string name)
         {
+            if(string.IsNullOrEmpty(name))
+                throw new InvalidNameException("O nome não pode ser nulo ou vazio.");
             Name = name;
         }
     }

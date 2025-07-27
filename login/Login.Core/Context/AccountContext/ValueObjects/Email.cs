@@ -1,10 +1,12 @@
-﻿using Login.Core.AccountContext.Exceptions;
-using Login.Core.SharedContext.Extensions;
+﻿using Login.Core.Context.AccountContext.Exceptions;
+using Login.Core.Context.AccountContext.ValueObjects;
+using Login.Core.Context.SharedContext.Extensions;
+using Login.Core.Context.SharedContext.ValueObjects;
 using System.Text.RegularExpressions;
 
 namespace Login.Core.AccountContext.ValueObjects
 {
-    public partial class Email : SharedContext.ValueObjects.ValueObject
+    public partial class Email : ValueObject
     {
         private const string _pattern = @"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$";
 
@@ -34,6 +36,7 @@ namespace Login.Core.AccountContext.ValueObjects
             Verification = new VerificationEmail();
         }
 
+        // source generator para regex
         [GeneratedRegex(_pattern)]
         private static partial Regex EmailRegex();
 

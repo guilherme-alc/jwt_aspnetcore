@@ -1,4 +1,4 @@
-﻿namespace Login.Core.AccountContext.ValueObjects
+﻿namespace Login.Core.Context.AccountContext.ValueObjects
 {
     public class VerificationPassword : Verification
     {
