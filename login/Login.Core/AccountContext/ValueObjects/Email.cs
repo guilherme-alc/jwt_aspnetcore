@@ -8,6 +8,8 @@ namespace Login.Core.AccountContext.ValueObjects
     {
         private const string _pattern = @"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$";
 
+        protected Email() { }
+
         public Email(string adress)
         {
             if(string.IsNullOrEmpty(adress))
@@ -23,13 +25,13 @@ namespace Login.Core.AccountContext.ValueObjects
 
         public string Adress { get; }
         public string Hash => Adress.ToBase64();
-        public Verification Verification { get; private set; } = new Verification();
+        public VerificationEmail Verification { get; private set; } = new VerificationEmail();
 
         public void ResendVerification()
         {
             if (Verification.IsActive)
                 throw new InvalidEmailException("Esse e-mail já foi verificado.");
-            Verification = new Verification();
+            Verification = new VerificationEmail();
         }
 
         [GeneratedRegex(_pattern)]
