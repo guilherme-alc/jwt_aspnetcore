@@ -1,10 +1,9 @@
 ﻿using Login.Core.Contexts.AccountContext.Exceptions;
-using Login.Core.Contexts.AccountContext.ValueObjects;
 using Login.Core.Contexts.SharedContext.Extensions;
 using Login.Core.Contexts.SharedContext.ValueObjects;
 using System.Text.RegularExpressions;
 
-namespace Login.Core.AccountContexts.ValueObjects
+namespace Login.Core.Contexts.AccountContext.ValueObjects
 {
     public partial class Email : ValueObject
     {
