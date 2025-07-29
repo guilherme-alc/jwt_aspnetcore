@@ -4,6 +4,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddOpenApi();
 builder.AddConfiguration();
+builder.AddJwtAuthentication();
 
 var app = builder.Build();
 
