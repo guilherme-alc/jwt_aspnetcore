@@ -1,5 +1,4 @@
-﻿using Login.Core.AccountContexts.ValueObjects;
-using Login.Core.Contexts.AccountContext.Exceptions;
+﻿using Login.Core.Contexts.AccountContext.Exceptions;
 using Login.Core.Contexts.AccountContext.ValueObjects;
 using Login.Core.Contexts.SharedContext.Entities;
 
@@ -8,10 +7,11 @@ namespace Login.Core.Contexts.AccountContext.Entities
     public class User : Entity
     {
         protected User() { } // Para o EF Core
-        public User(string email, string? password = null)
+        public User(string email, Password password, string name)
         {
             Email = email;
-            Password = new Password(password);
+            Password = password;
+            Name = name;
         }
 
         public string Name { get; set; } = string.Empty;

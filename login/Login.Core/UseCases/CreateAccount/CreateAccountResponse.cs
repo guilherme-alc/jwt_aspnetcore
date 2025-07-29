@@ -8,7 +8,7 @@ namespace Login.Core.UseCases.CreateAccount
         protected CreateAccountResponse()
         { }
 
-        public CreateAccountResponse(string message, int status, IEnumerable<Notification> notifications)
+        public CreateAccountResponse(string message, int status, IEnumerable<Notification>? notifications = null)
         {
             Message = message;
             Status = status;
