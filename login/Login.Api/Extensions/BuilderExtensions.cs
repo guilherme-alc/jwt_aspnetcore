@@ -52,5 +52,13 @@ namespace Login.Api.Extensions
 
             builder.Services.AddAuthorization();
         }
+
+        public static void AddMediator(this WebApplicationBuilder builder)
+        {
+            builder.Services.AddMediatR(cfg =>
+            {
+                cfg.RegisterServicesFromAssembly(typeof(Configuration).Assembly);
+            });
+        }
     }
 }

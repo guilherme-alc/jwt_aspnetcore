@@ -1,10 +1,11 @@
 ﻿using Login.Core.Contexts.AccountContext.Entities;
 using Login.Core.Contexts.AccountContext.UseCases.CreateAccount.Contracts;
 using Login.Core.Contexts.AccountContext.ValueObjects;
+using MediatR;
 
 namespace Login.Core.Contexts.AccountContext.UseCases.CreateAccount
 {
-    public class CreateAccountHandler
+    public class CreateAccountHandler :IRequestHandler<CreateAccountRequest, CreateAccountResponse>
     {
         private readonly ICreateAccountRepository _repository;
         private readonly ICreateAccountService _service;
