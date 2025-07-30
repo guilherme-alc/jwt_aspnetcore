@@ -1,8 +1,8 @@
 ﻿using Login.Core.Contexts.AccountContext.Entities;
+using Login.Core.Contexts.AccountContext.UseCases.CreateAccount.Contracts;
 using Login.Core.Contexts.AccountContext.ValueObjects;
-using Login.Core.UseCases.CreateAccount.Contracts;
 
-namespace Login.Core.UseCases.CreateAccount
+namespace Login.Core.Contexts.AccountContext.UseCases.CreateAccount
 {
     public class CreateAccountHandler
     {

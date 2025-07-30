@@ -1,7 +1,7 @@
 ﻿using Flunt.Notifications;
 using Flunt.Validations;
 
-namespace Login.Core.UseCases.CreateAccount
+namespace Login.Core.Contexts.AccountContext.UseCases.CreateAccount
 {
     public static class CreateAccountValidation
     {

@@ -1,4 +1,4 @@
-﻿namespace Login.Core.UseCases.CreateAccount
+﻿namespace Login.Core.Contexts.AccountContext.UseCases.CreateAccount
 {
     public record CreateAccountRequest(string Name, string Email, string Password);
 }

@@ -1,7 +1,7 @@
 ﻿using Flunt.Notifications;
 using Login.Core.Contexts.SharedContext.UseCases;
 
-namespace Login.Core.UseCases.CreateAccount
+namespace Login.Core.Contexts.AccountContext.UseCases.CreateAccount
 {
     public class CreateAccountResponse : Response
     {

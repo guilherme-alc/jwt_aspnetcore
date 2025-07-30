@@ -1,6 +1,6 @@
 ﻿using Login.Core.Contexts.AccountContext.Entities;
 
-namespace Login.Core.UseCases.CreateAccount.Contracts
+namespace Login.Core.Contexts.AccountContext.UseCases.CreateAccount.Contracts
 {
     public interface ICreateAccountService
     {
