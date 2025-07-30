@@ -7,6 +7,10 @@ builder.AddConfiguration();
 builder.AddDatabase();
 builder.AddJwtAuthentication();
 
+builder.AddAccountContext();
+
+builder.AddMediator();
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
@@ -20,10 +24,6 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
-
-app.MapGet("", () =>
-{
-
-});
+app.MapAccountContext();
 
 app.Run();

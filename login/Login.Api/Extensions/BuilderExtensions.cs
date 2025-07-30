@@ -17,6 +17,10 @@ namespace Login.Api.Extensions
             Configuration.Secrets.PasswordSaltKey = builder.Configuration
                 .GetSection("Secrets")
                 .GetValue<string>("PasswordSaltKey") ?? string.Empty;
+
+            Configuration.SendGrid.ApiKey = builder.Configuration
+                .GetSection("Secrets")
+                .GetValue<string>("ApiKey") ?? string.Empty;
         }
 
         public static void AddDatabase(this WebApplicationBuilder builder)
