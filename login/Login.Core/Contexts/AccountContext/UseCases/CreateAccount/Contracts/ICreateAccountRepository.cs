@@ -6,5 +6,6 @@ namespace Login.Core.Contexts.AccountContext.UseCases.CreateAccount.Contracts
     {
         Task<bool> AnyAsync(string email, CancellationToken cancellationToken);
         Task CreateAsync(User user, CancellationToken cancellationToken);
+        Task SaveAsync(CancellationToken cacellationToken);
     }
 }
