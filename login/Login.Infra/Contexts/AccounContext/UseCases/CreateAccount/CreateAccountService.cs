@@ -4,7 +4,7 @@ using Login.Core.Contexts.AccountContext.UseCases.CreateAccount.Contracts;
 using SendGrid;
 using SendGrid.Helpers.Mail;
 
-namespace Login.Infra.Contexts.AccounContext.UseCases
+namespace Login.Infra.Contexts.AccounContext.UseCases.CreateAccount
 {
     public class CreateAccountService : ICreateAccountService
     {

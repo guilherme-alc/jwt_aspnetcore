@@ -3,7 +3,7 @@ using Login.Core.Contexts.AccountContext.UseCases.CreateAccount.Contracts;
 using Login.Infra.Data;
 using Microsoft.EntityFrameworkCore;
 
-namespace Login.Infra.Contexts.AccounContext.UseCases
+namespace Login.Infra.Contexts.AccounContext.UseCases.CreateAccount
 {
     public class CreateAccountRepository : ICreateAccountRepository
     {
