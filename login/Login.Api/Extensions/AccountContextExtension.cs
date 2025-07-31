@@ -22,7 +22,6 @@ namespace Login.Api.Extensions
             builder.Services.AddTransient<IAuthenticateRepository, AuthenticateRepository>();  
 
             #endregion
-
         }
 
         public static void MapAccountContext(this WebApplication app)
@@ -46,9 +45,16 @@ namespace Login.Api.Extensions
                 IRequestHandler<AuthenticateRequest, AuthenticateResponse> handler) =>
             {
                 var result = await handler.Handle(request, new CancellationToken());
-                return result.IsSuccess
-                    ? Results.Ok(result)
-                    : Results.BadRequest(result);
+                
+                if(!result.IsSuccess)
+                    return Results.Json(result, statusCode: result.Status);
+                
+                if(result.Data == null)
+                    return Results.Json(result, statusCode: 500);
+                
+                result.Data.Token = JwtExtension.Generate(result.Data);
+                
+                return Results.Ok(result);
             });
 
             #endregion

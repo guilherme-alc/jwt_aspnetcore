@@ -21,6 +21,10 @@ namespace Login.Api.Extensions
             Configuration.SendGrid.ApiKey = builder.Configuration
                 .GetSection("Secrets")
                 .GetValue<string>("ApiKey") ?? string.Empty;
+            
+            Configuration.Secrets.JwtPrivateKey = builder.Configuration
+                .GetSection("Secrets")
+                .GetValue<string>("JwtPrivateKey") ?? string.Empty;
         }
 
         public static void AddDatabase(this WebApplicationBuilder builder)
