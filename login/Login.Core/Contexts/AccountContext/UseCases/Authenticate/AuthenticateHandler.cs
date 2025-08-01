@@ -69,9 +69,9 @@ public class AuthenticateHandler : IRequestHandler<AuthenticateRequest, Authenti
                 Id = user.Id.ToString(),
                 Name = user.Name,
                 Email = user.Email,
-                Roles = Array.Empty<string>()
+                Roles = user.Roles.Select(r => r.Name).ToArray()
             };
-            
+
             return new AuthenticateResponse(string.Empty, data);
         }
         catch (Exception ex)

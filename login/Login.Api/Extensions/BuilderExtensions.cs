@@ -51,14 +51,24 @@ namespace Login.Api.Extensions
                 options.SaveToken = true;
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration.Secrets.PasswordSaltKey)),
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration.Secrets.JwtPrivateKey)),
                     ValidateIssuerSigningKey = true,
                     ValidateIssuer = false,
                     ValidateAudience = false,
                 };
             });
 
-            builder.Services.AddAuthorization();
+            builder.Services.AddAuthorization(options =>
+            {
+                options.AddPolicy("Adm", policy => 
+                    policy.RequireRole("Adm"));
+                options.AddPolicy("Mod", policy => 
+                    policy.RequireRole("Mod"));
+                options.AddPolicy("User", policy => 
+                    policy.RequireRole("User"));
+                options.AddPolicy("Author", policy => 
+                    policy.RequireRole("Author"));
+            });
         }
 
         public static void AddMediator(this WebApplicationBuilder builder)

@@ -17,6 +17,7 @@ public class AuthenticateRepository : IAuthenticateRepository
     {
         return await _context.Users
             .AsNoTracking()
+            .Include(u => u.Roles)
             .FirstOrDefaultAsync(x => x.Email.Address == email, cancellationToken);
     }
 }

@@ -58,6 +58,15 @@ namespace Login.Api.Extensions
             });
 
             #endregion
+            
+            #region Somente acesso permitido
+
+            app.MapGet("/api/account/private", async () =>
+            {
+                return Results.Ok("Acesso permitido!");
+            }).RequireAuthorization("Adm");
+
+            #endregion
         }
     }
 }
