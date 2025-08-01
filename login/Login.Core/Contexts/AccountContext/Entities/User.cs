@@ -18,7 +18,8 @@ namespace Login.Core.Contexts.AccountContext.Entities
         public Email Email { get; private set; } = null!;
         public Password Password { get; private set; } = null!;
         public string Image { get; set; } = string.Empty;
-
+        public ICollection<Role> Roles { get; set; } = new List<Role>();
+        
         public void UpdatePassword(string plainTextPassword, string code)
         {
             if (string.IsNullOrEmpty(plainTextPassword))
